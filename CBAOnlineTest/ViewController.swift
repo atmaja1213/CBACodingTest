@@ -8,12 +8,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+var newsFeedView = NewsFeedView()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
-
+    override func viewDidLayoutSubviews() {
+        self.loadUI()
+    }
+    func loadUI() {
+        self.newsFeedView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        self.view.addSubview(self.newsFeedView)
+        self.newsFeedView.createUI()
+    }
 
 }
 
