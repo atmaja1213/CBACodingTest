@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var articles = [Article]()
+    var activityView:UIActivityIndicatorView?
 var newsFeedView = NewsFeedView()
     private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
@@ -17,6 +18,10 @@ var newsFeedView = NewsFeedView()
     }
     override func viewDidLayoutSubviews() {
         self.loadUI()
+        self.callTheNewsDetailsApi()
+        
+    }
+    func callTheNewsDetailsApi() {
         self.getNewsData(completion: { [weak self] result in
             print(result)
             switch result {
@@ -29,12 +34,18 @@ var newsFeedView = NewsFeedView()
                         self?.articles = news.articles
                         DispatchQueue.main.async{
                             self?.newsFeedView.newsTableView.reloadData()
+
                         }
                            
             }
            
         })
-        
+        DispatchQueue.main.async{
+            if ((self.activityView) != nil) {
+                                    self.activityView?.stopAnimating()
+                                        self.activityView?.removeFromSuperview()
+                                    }
+                                    }
     }
     func loadUI() {
         self.newsFeedView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
@@ -64,29 +75,20 @@ var newsFeedView = NewsFeedView()
 
     }
     @objc private func refreshWeatherData(_ sender: Any) {
-        self.getNewsData(completion: { [weak self] result in
-            print(result)
-            switch result {
-            case.failure(let error):
-                           print(error)
-                       
-                       
-                       case .success(let news):
-                        
-                        self?.articles = news.articles
-                        DispatchQueue.main.async{
-                            self?.newsFeedView.newsTableView.reloadData()
-                            self?.refreshControl.endRefreshing()
-                        }
-                           
-            }
-           
-        })
+        self.callTheNewsDetailsApi()
+        self.refreshControl.endRefreshing()
+       
         
     }
 
     // MARK: - Call news api
     func getNewsData(completion: @escaping(Result<NewsDetails, Error>) -> Void) {
+        self.activityView = UIActivityIndicatorView(style: .medium)
+        activityView?.center = self.newsFeedView.center
+        activityView?.tintColor = UIColor.blue
+        activityView?.startAnimating()
+        guard let activityIndicator = activityView else { return}
+        self.newsFeedView.addSubview(activityIndicator)
         
         let dataTask = URLSession.shared.dataTask(with: URL(string: "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=05030e7af26c4f52b9cdcf04dadf5a30")!) { (data, response, error) in
             
@@ -119,25 +121,37 @@ var newsFeedView = NewsFeedView()
 // MARK: - Table view delegate and datasource methods
 extension ViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.articles.count
+        //self.articles.count
+        20
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
-        if let descriptionText = self.articles[indexPath.row].description, let titelText = self.articles[indexPath.row].title {
-        cell.descriptionLabel.text = descriptionText
-            cell.titelLabel.text = titelText
-        } else {
+//        if let descriptionText = self.articles[indexPath.row].description, let titelText = self.articles[indexPath.row].title {
+//        cell.descriptionLabel.text = descriptionText
+//            cell.titelLabel.text = titelText
+//            cell.snapView.loadImageCacheWithUrlString(urlString: "https://static.foxnews.com/foxnews.com/content/uploads/2022/03/Austin-plane1.jpeg")
+//        } else {
             cell.titelLabel.text = "We are getting the news soon...We just need some more information to get the things ready and deliver an awesome news reading experience for you & keep you fully updated."
             cell.descriptionLabel.text = "We are getting the news soon..."
-        }
+            cell.snapView.loadImageCacheWithUrlString(urlString: "https://static.foxnews.com/foxnews.com/content/uploads/2022/03/Austin-plane1.jpeg")
+       // }
         
 
                 return cell
     }
-    
+    /*The api being used is not giving data in chuncks...so i am calling the same api when the table view is scrolled beyound the screen size. */
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            let offsetY = scrollView.contentOffset.y
+            let contentHeight = scrollView.contentSize.height
+
+            if (offsetY > contentHeight - scrollView.frame.height * 4)  {
+               // self.callTheNewsDetailsApi()
+            }
+        }
+
     
 }
 

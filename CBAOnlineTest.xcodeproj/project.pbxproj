@@ -16,6 +16,7 @@
 		C57D3C8727DB49A400C8F6FA /* NewsFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D3C8627DB49A400C8F6FA /* NewsFeedView.swift */; };
 		C57D3C8B27DB774300C8F6FA /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D3C8A27DB774300C8F6FA /* CustomTableViewCell.swift */; };
 		C57D3C8E27DC886F00C8F6FA /* NewsDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D3C8D27DC886F00C8F6FA /* NewsDetails.swift */; };
+		C57D3C9127DCD84300C8F6FA /* LazyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D3C9027DCD84300C8F6FA /* LazyImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C57D3C8627DB49A400C8F6FA /* NewsFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedView.swift; sourceTree = "<group>"; };
 		C57D3C8A27DB774300C8F6FA /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		C57D3C8D27DC886F00C8F6FA /* NewsDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetails.swift; sourceTree = "<group>"; };
+		C57D3C9027DCD84300C8F6FA /* LazyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				C57D3C8627DB49A400C8F6FA /* NewsFeedView.swift */,
 				C57D3C8A27DB774300C8F6FA /* CustomTableViewCell.swift */,
 				C57D3C8D27DC886F00C8F6FA /* NewsDetails.swift */,
+				C57D3C9027DCD84300C8F6FA /* LazyImage.swift */,
 			);
 			path = CBAOnlineTest;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 				C57D3C7227DB495700C8F6FA /* AppDelegate.swift in Sources */,
 				C57D3C7427DB495700C8F6FA /* SceneDelegate.swift in Sources */,
 				C57D3C8E27DC886F00C8F6FA /* NewsDetails.swift in Sources */,
+				C57D3C9127DCD84300C8F6FA /* LazyImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,7 +19,7 @@ class CustomTableViewCell: UITableViewCell {
     let lineView = UIView()
     let descriptionLabel = UILabel()
     let titelLabel = UILabel()
-    let snapView = UIImageView()
+    let snapView = LazyImage()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
