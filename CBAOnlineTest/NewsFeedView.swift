@@ -19,8 +19,7 @@ class NewsFeedView: UIView {
         headerLabel.font = UIFont(name:"Helvetica Neue", size: 20.0)
         self.addSubview(headerLabel)
         self.backgroundColor = UIColor.white
-        self.newsTableView.backgroundColor = UIColor.gray
-//        self.newsTableView.frame = CGRect(x: 0, y: 100, width: self.frame.width, height: self.frame.height)
+        self.newsTableView.backgroundColor = UIColor.white
         self.newsTableView.separatorStyle = .none
         self.addSubview(self.newsTableView)
         
