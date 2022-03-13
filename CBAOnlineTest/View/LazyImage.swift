@@ -15,7 +15,7 @@ class LazyImage: UIImageView {
             self.image = cachedImage
             return
         }
-
+    self.image = UIImage(named: "defaultImage")
         URLSession.shared.dataTask(with: URL(string: urlString)!) { (data, response, error) in
             if error != nil {
                 return

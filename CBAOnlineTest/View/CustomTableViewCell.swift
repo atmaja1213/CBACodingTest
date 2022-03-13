@@ -40,10 +40,12 @@ class CustomTableViewCell: UITableViewCell {
         // add image view
         contentView.addSubview(snapView)
         snapView.translatesAutoresizingMaskIntoConstraints = false
-        snapView.leadingAnchor.constraint(equalTo: marginGuide.trailingAnchor, constant: -85).isActive = true
-        snapView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        snapView.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        snapView.leadingAnchor.constraint(equalTo: marginGuide.trailingAnchor, constant: -65).isActive = true
+        snapView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        snapView.widthAnchor.constraint(equalToConstant: 50).isActive = true
         snapView.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
+        self.snapView.layer.masksToBounds = true
+        self.snapView.layer.cornerRadius = 8
         snapView.backgroundColor = UIColor.systemPink
         //Add description label
         contentView.addSubview(descriptionLabel)
@@ -59,7 +61,7 @@ class CustomTableViewCell: UITableViewCell {
         contentView.addSubview(lineView)
         lineView.translatesAutoresizingMaskIntoConstraints = false
         lineView.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
-        lineView.heightAnchor.constraint(equalToConstant: 7).isActive = true
+        lineView.heightAnchor.constraint(equalToConstant: 3).isActive = true
         lineView.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
         lineView.topAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
         lineView.backgroundColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)

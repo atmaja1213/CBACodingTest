@@ -9,10 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     var articles = [Article]()
-    var activityView:UIActivityIndicatorView?
     var newsFeedView = NewsFeedView()
     private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
+  
         super.viewDidLoad()
         
     }
@@ -27,9 +27,7 @@ class ViewController: UIViewController {
             switch result {
             case.failure(let error):
                 print(error)
-                
-                
-            case .success(let news):
+                case .success(let news):
                 
                 self?.articles = news.articles
                 DispatchQueue.main.async{
@@ -40,14 +38,10 @@ class ViewController: UIViewController {
             }
             
         })
-        DispatchQueue.main.async{
-            if ((self.activityView) != nil) {
-                self.activityView?.stopAnimating()
-                self.activityView?.removeFromSuperview()
-            }
-        }
+        
     }
     func loadUI() {
+        
         self.newsFeedView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         self.view.addSubview(self.newsFeedView)
         self.newsFeedView.createUI()
@@ -83,12 +77,7 @@ class ViewController: UIViewController {
     
     // MARK: - Call news api
     func getNewsData(_ url:String,completion: @escaping(Result<NewsDetails, Error>) -> Void) {
-        self.activityView = UIActivityIndicatorView(style: .medium)
-        activityView?.center = self.newsFeedView.center
-        activityView?.tintColor = UIColor.blue
-        activityView?.startAnimating()
-        guard let activityIndicator = activityView else { return}
-        self.newsFeedView.addSubview(activityIndicator)
+        
         guard  let validUrl = URL(string: url) else {
             return
         }
@@ -119,23 +108,23 @@ class ViewController: UIViewController {
 // MARK: - Table view delegate and datasource methods
 extension ViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //self.articles.count
-        20
+        self.articles.count
+        
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
-        //        if let descriptionText = self.articles[indexPath.row].description, let titelText = self.articles[indexPath.row].title {
-        //        cell.descriptionLabel.text = descriptionText
-        //            cell.titelLabel.text = titelText
-        //            cell.snapView.loadImageCacheWithUrlString(urlString: "https://static.foxnews.com/foxnews.com/content/uploads/2022/03/Austin-plane1.jpeg")
-        //        } else {
+        if let descriptionText = self.articles[indexPath.row].description, let titelText = self.articles[indexPath.row].title,let imageURL = self.articles[indexPath.row].urlToImage {
+                cell.descriptionLabel.text = descriptionText
+                    cell.titelLabel.text = titelText
+                    cell.snapView.loadImageCacheWithUrlString(urlString:imageURL)
+                } else {
         cell.titelLabel.text = Constants.defaultTitelText
         cell.descriptionLabel.text = Constants.defaultDescriptionText
         cell.snapView.loadImageCacheWithUrlString(urlString: Constants.defaultImageURL)
-        // }
+         }
         
         
         return cell
@@ -146,7 +135,7 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
         let contentHeight = scrollView.contentSize.height
         
         if (offsetY > contentHeight - scrollView.frame.height * 4)  {
-            // self.callTheNewsDetailsApi()
+             self.callTheNewsDetailsApi()
         }
     }
     
