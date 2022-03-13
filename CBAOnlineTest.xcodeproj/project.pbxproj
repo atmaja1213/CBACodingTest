@@ -18,10 +18,18 @@
 		C57D3C8E27DC886F00C8F6FA /* NewsDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D3C8D27DC886F00C8F6FA /* NewsDetails.swift */; };
 		C57D3C9127DCD84300C8F6FA /* LazyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D3C9027DCD84300C8F6FA /* LazyImage.swift */; };
 		C57D3C9E27DDE80D00C8F6FA /* CBAOnlineTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D3C9D27DDE80D00C8F6FA /* CBAOnlineTestTests.swift */; };
+		C57D3CB227DDF2E000C8F6FA /* CBAOnlineTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D3CB127DDF2E000C8F6FA /* CBAOnlineTestUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		C57D3CA027DDE80D00C8F6FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C57D3C6627DB495700C8F6FA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C57D3C6D27DB495700C8F6FA;
+			remoteInfo = CBAOnlineTest;
+		};
+		C57D3CB427DDF2E000C8F6FA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C57D3C6627DB495700C8F6FA /* Project object */;
 			proxyType = 1;
@@ -46,6 +54,9 @@
 		C57D3C9B27DDE80D00C8F6FA /* CBAOnlineTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CBAOnlineTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57D3C9D27DDE80D00C8F6FA /* CBAOnlineTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBAOnlineTestTests.swift; sourceTree = "<group>"; };
 		C57D3C9F27DDE80D00C8F6FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C57D3CAF27DDF2E000C8F6FA /* CBAOnlineTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CBAOnlineTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C57D3CB127DDF2E000C8F6FA /* CBAOnlineTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBAOnlineTestUITests.swift; sourceTree = "<group>"; };
+		C57D3CB327DDF2E000C8F6FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +74,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C57D3CAC27DDF2E000C8F6FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -71,6 +89,7 @@
 			children = (
 				C57D3C7027DB495700C8F6FA /* CBAOnlineTest */,
 				C57D3C9C27DDE80D00C8F6FA /* CBAOnlineTestTests */,
+				C57D3CB027DDF2E000C8F6FA /* CBAOnlineTestUITests */,
 				C57D3C6F27DB495700C8F6FA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -80,6 +99,7 @@
 			children = (
 				C57D3C6E27DB495700C8F6FA /* CBAOnlineTest.app */,
 				C57D3C9B27DDE80D00C8F6FA /* CBAOnlineTestTests.xctest */,
+				C57D3CAF27DDF2E000C8F6FA /* CBAOnlineTestUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +129,15 @@
 				C57D3C9F27DDE80D00C8F6FA /* Info.plist */,
 			);
 			path = CBAOnlineTestTests;
+			sourceTree = "<group>";
+		};
+		C57D3CB027DDF2E000C8F6FA /* CBAOnlineTestUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C57D3CB127DDF2E000C8F6FA /* CBAOnlineTestUITests.swift */,
+				C57D3CB327DDF2E000C8F6FA /* Info.plist */,
+			);
+			path = CBAOnlineTestUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +178,24 @@
 			productReference = C57D3C9B27DDE80D00C8F6FA /* CBAOnlineTestTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		C57D3CAE27DDF2E000C8F6FA /* CBAOnlineTestUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C57D3CB627DDF2E000C8F6FA /* Build configuration list for PBXNativeTarget "CBAOnlineTestUITests" */;
+			buildPhases = (
+				C57D3CAB27DDF2E000C8F6FA /* Sources */,
+				C57D3CAC27DDF2E000C8F6FA /* Frameworks */,
+				C57D3CAD27DDF2E000C8F6FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C57D3CB527DDF2E000C8F6FA /* PBXTargetDependency */,
+			);
+			name = CBAOnlineTestUITests;
+			productName = CBAOnlineTestUITests;
+			productReference = C57D3CAF27DDF2E000C8F6FA /* CBAOnlineTestUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -162,6 +209,10 @@
 						CreatedOnToolsVersion = 12.2;
 					};
 					C57D3C9A27DDE80D00C8F6FA = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = C57D3C6D27DB495700C8F6FA;
+					};
+					C57D3CAE27DDF2E000C8F6FA = {
 						CreatedOnToolsVersion = 12.2;
 						TestTargetID = C57D3C6D27DB495700C8F6FA;
 					};
@@ -182,6 +233,7 @@
 			targets = (
 				C57D3C6D27DB495700C8F6FA /* CBAOnlineTest */,
 				C57D3C9A27DDE80D00C8F6FA /* CBAOnlineTestTests */,
+				C57D3CAE27DDF2E000C8F6FA /* CBAOnlineTestUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -198,6 +250,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C57D3C9927DDE80D00C8F6FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C57D3CAD27DDF2E000C8F6FA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -229,6 +288,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C57D3CAB27DDF2E000C8F6FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C57D3CB227DDF2E000C8F6FA /* CBAOnlineTestUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -236,6 +303,11 @@
 			isa = PBXTargetDependency;
 			target = C57D3C6D27DB495700C8F6FA /* CBAOnlineTest */;
 			targetProxy = C57D3CA027DDE80D00C8F6FA /* PBXContainerItemProxy */;
+		};
+		C57D3CB527DDF2E000C8F6FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C57D3C6D27DB495700C8F6FA /* CBAOnlineTest */;
+			targetProxy = C57D3CB427DDF2E000C8F6FA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -449,6 +521,42 @@
 			};
 			name = Release;
 		};
+		C57D3CB727DDF2E000C8F6FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CBAOnlineTestUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MYAPPS.COM.CBAOnlineTestUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CBAOnlineTest;
+			};
+			name = Debug;
+		};
+		C57D3CB827DDF2E000C8F6FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CBAOnlineTestUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MYAPPS.COM.CBAOnlineTestUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CBAOnlineTest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -475,6 +583,15 @@
 			buildConfigurations = (
 				C57D3CA327DDE80D00C8F6FA /* Debug */,
 				C57D3CA427DDE80D00C8F6FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C57D3CB627DDF2E000C8F6FA /* Build configuration list for PBXNativeTarget "CBAOnlineTestUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C57D3CB727DDF2E000C8F6FA /* Debug */,
+				C57D3CB827DDF2E000C8F6FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

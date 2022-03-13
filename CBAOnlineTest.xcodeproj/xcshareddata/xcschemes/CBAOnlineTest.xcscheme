@@ -38,6 +38,16 @@
                ReferencedContainer = "container:CBAOnlineTest.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C57D3CAE27DDF2E000C8F6FA"
+               BuildableName = "CBAOnlineTestUITests.xctest"
+               BlueprintName = "CBAOnlineTestUITests"
+               ReferencedContainer = "container:CBAOnlineTest.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
