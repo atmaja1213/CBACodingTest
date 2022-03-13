@@ -19,6 +19,7 @@
 		C57D3C9127DCD84300C8F6FA /* LazyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D3C9027DCD84300C8F6FA /* LazyImage.swift */; };
 		C57D3C9E27DDE80D00C8F6FA /* CBAOnlineTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D3C9D27DDE80D00C8F6FA /* CBAOnlineTestTests.swift */; };
 		C57D3CB227DDF2E000C8F6FA /* CBAOnlineTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D3CB127DDF2E000C8F6FA /* CBAOnlineTestUITests.swift */; };
+		C57D3CCC27DDF90300C8F6FA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D3CCB27DDF90300C8F6FA /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		C57D3CAF27DDF2E000C8F6FA /* CBAOnlineTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CBAOnlineTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57D3CB127DDF2E000C8F6FA /* CBAOnlineTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBAOnlineTestUITests.swift; sourceTree = "<group>"; };
 		C57D3CB327DDF2E000C8F6FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C57D3CCB27DDF90300C8F6FA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,17 +109,14 @@
 		C57D3C7027DB495700C8F6FA /* CBAOnlineTest */ = {
 			isa = PBXGroup;
 			children = (
-				C57D3C7127DB495700C8F6FA /* AppDelegate.swift */,
-				C57D3C7327DB495700C8F6FA /* SceneDelegate.swift */,
-				C57D3C7527DB495700C8F6FA /* ViewController.swift */,
-				C57D3C7727DB495700C8F6FA /* Main.storyboard */,
+				C57D3CCA27DDF8ED00C8F6FA /* Utilities */,
+				C57D3CC627DDF6B300C8F6FA /* Model */,
+				C57D3CC527DDF66100C8F6FA /* View */,
+				C57D3CC327DDF63000C8F6FA /* Delegates */,
+				C57D3CC427DDF64D00C8F6FA /* Controller */,
 				C57D3C7A27DB495900C8F6FA /* Assets.xcassets */,
 				C57D3C7C27DB495900C8F6FA /* LaunchScreen.storyboard */,
 				C57D3C7F27DB495900C8F6FA /* Info.plist */,
-				C57D3C8627DB49A400C8F6FA /* NewsFeedView.swift */,
-				C57D3C8A27DB774300C8F6FA /* CustomTableViewCell.swift */,
-				C57D3C8D27DC886F00C8F6FA /* NewsDetails.swift */,
-				C57D3C9027DCD84300C8F6FA /* LazyImage.swift */,
 			);
 			path = CBAOnlineTest;
 			sourceTree = "<group>";
@@ -138,6 +137,50 @@
 				C57D3CB327DDF2E000C8F6FA /* Info.plist */,
 			);
 			path = CBAOnlineTestUITests;
+			sourceTree = "<group>";
+		};
+		C57D3CC327DDF63000C8F6FA /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				C57D3C7127DB495700C8F6FA /* AppDelegate.swift */,
+				C57D3C7327DB495700C8F6FA /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		C57D3CC427DDF64D00C8F6FA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C57D3C7527DB495700C8F6FA /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C57D3CC527DDF66100C8F6FA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C57D3C8A27DB774300C8F6FA /* CustomTableViewCell.swift */,
+				C57D3C8627DB49A400C8F6FA /* NewsFeedView.swift */,
+				C57D3C9027DCD84300C8F6FA /* LazyImage.swift */,
+				C57D3C7727DB495700C8F6FA /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C57D3CC627DDF6B300C8F6FA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C57D3C8D27DC886F00C8F6FA /* NewsDetails.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C57D3CCA27DDF8ED00C8F6FA /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C57D3CCB27DDF90300C8F6FA /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +320,7 @@
 				C57D3C7427DB495700C8F6FA /* SceneDelegate.swift in Sources */,
 				C57D3C8E27DC886F00C8F6FA /* NewsDetails.swift in Sources */,
 				C57D3C9127DCD84300C8F6FA /* LazyImage.swift in Sources */,
+				C57D3CCC27DDF90300C8F6FA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,6 @@ class CustomTableViewCell: UITableViewCell {
             return view
         }()
 
-        
     var myViewHeightConstraint: NSLayoutConstraint!
     let lineView = UIView()
     let descriptionLabel = UILabel()
@@ -64,8 +63,6 @@ class CustomTableViewCell: UITableViewCell {
         lineView.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
         lineView.topAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
         lineView.backgroundColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
-        
-
         
     }
 

@@ -7,7 +7,6 @@
 
 import Foundation
 struct NewsDetails:Codable {
-    
     var articles :[Article]
 }
 struct Article:Codable {

@@ -12,7 +12,6 @@ class NewsFeedView: UIView {
     let headerLabel = UILabel()
 
     func createUI() {
-        
         headerLabel.frame =  CGRect(x: self.frame.width/2 - 60, y: 40, width: 120, height: 60)
         headerLabel.text = "Latest News"
         headerLabel.textColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)

@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     var articles = [Article]()
     var activityView:UIActivityIndicatorView?
-var newsFeedView = NewsFeedView()
+    var newsFeedView = NewsFeedView()
     private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,30 +22,30 @@ var newsFeedView = NewsFeedView()
         
     }
     func callTheNewsDetailsApi() {
-        self.getNewsData("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=05030e7af26c4f52b9cdcf04dadf5a30", completion: { [weak self] result in
+        self.getNewsData(Constants.kNewsUrl, completion: { [weak self] result in
             print(result)
             switch result {
             case.failure(let error):
-                           print(error)
-                       
-                       
-                       case .success(let news):
-                        
-                        self?.articles = news.articles
-                        DispatchQueue.main.async{
-                            self?.newsFeedView.newsTableView.reloadData()
-
-                        }
-                           
+                print(error)
+                
+                
+            case .success(let news):
+                
+                self?.articles = news.articles
+                DispatchQueue.main.async{
+                    self?.newsFeedView.newsTableView.reloadData()
+                    
+                }
+                
             }
-           
+            
         })
         DispatchQueue.main.async{
             if ((self.activityView) != nil) {
-                                    self.activityView?.stopAnimating()
-                                        self.activityView?.removeFromSuperview()
-                                    }
-                                    }
+                self.activityView?.stopAnimating()
+                self.activityView?.removeFromSuperview()
+            }
+        }
     }
     func loadUI() {
         self.newsFeedView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
@@ -56,7 +56,7 @@ var newsFeedView = NewsFeedView()
         self.newsFeedView.newsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         self.newsFeedView.newsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         self.newsFeedView.newsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-
+        
         self.newsFeedView.newsTableView.delegate = self
         self.newsFeedView.newsTableView.dataSource = self
         self.newsFeedView.newsTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "cell")
@@ -70,17 +70,17 @@ var newsFeedView = NewsFeedView()
         }
         refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
         refreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
-        refreshControl.attributedTitle = NSAttributedString(string: "Fetching latest news ...", attributes: nil)
-
-
+        refreshControl.attributedTitle = NSAttributedString(string: Constants.kFetchingNews, attributes: nil)
+        
+        
     }
     @objc private func refreshWeatherData(_ sender: Any) {
         self.callTheNewsDetailsApi()
         self.refreshControl.endRefreshing()
-       
+        
         
     }
-
+    
     // MARK: - Call news api
     func getNewsData(_ url:String,completion: @escaping(Result<NewsDetails, Error>) -> Void) {
         self.activityView = UIActivityIndicatorView(style: .medium)
@@ -96,7 +96,6 @@ var newsFeedView = NewsFeedView()
             
             guard error == nil else {
                 print (error!.localizedDescription)
-                print ("stuck in data task")
                 return
             }
             
@@ -107,16 +106,13 @@ var newsFeedView = NewsFeedView()
                 completion(.success(jsonData))
             }
             catch {
-                print ("an error in catch")
                 print (error)
             }
             
-            
-        
         }
         dataTask.resume()
     }
- }
+}
 
 
 
@@ -126,34 +122,34 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
         //self.articles.count
         20
     }
-
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
-//        if let descriptionText = self.articles[indexPath.row].description, let titelText = self.articles[indexPath.row].title {
-//        cell.descriptionLabel.text = descriptionText
-//            cell.titelLabel.text = titelText
-//            cell.snapView.loadImageCacheWithUrlString(urlString: "https://static.foxnews.com/foxnews.com/content/uploads/2022/03/Austin-plane1.jpeg")
-//        } else {
-            cell.titelLabel.text = "We are getting the news soon...We just need some more information to get the things ready and deliver an awesome news reading experience for you & keep you fully updated."
-            cell.descriptionLabel.text = "We are getting the news soon..."
-            cell.snapView.loadImageCacheWithUrlString(urlString: "https://static.foxnews.com/foxnews.com/content/uploads/2022/03/Austin-plane1.jpeg")
-       // }
+        //        if let descriptionText = self.articles[indexPath.row].description, let titelText = self.articles[indexPath.row].title {
+        //        cell.descriptionLabel.text = descriptionText
+        //            cell.titelLabel.text = titelText
+        //            cell.snapView.loadImageCacheWithUrlString(urlString: "https://static.foxnews.com/foxnews.com/content/uploads/2022/03/Austin-plane1.jpeg")
+        //        } else {
+        cell.titelLabel.text = Constants.defaultTitelText
+        cell.descriptionLabel.text = Constants.defaultDescriptionText
+        cell.snapView.loadImageCacheWithUrlString(urlString: Constants.defaultImageURL)
+        // }
         
-
-                return cell
+        
+        return cell
     }
     /*The api being used is not giving data in chuncks...so i am calling the same api when the table view is scrolled beyound the screen size. */
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-            let offsetY = scrollView.contentOffset.y
-            let contentHeight = scrollView.contentSize.height
-
-            if (offsetY > contentHeight - scrollView.frame.height * 4)  {
-               // self.callTheNewsDetailsApi()
-            }
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        
+        if (offsetY > contentHeight - scrollView.frame.height * 4)  {
+            // self.callTheNewsDetailsApi()
         }
-
+    }
+    
     
 }
 
