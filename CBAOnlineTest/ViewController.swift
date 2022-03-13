@@ -22,7 +22,7 @@ var newsFeedView = NewsFeedView()
         
     }
     func callTheNewsDetailsApi() {
-        self.getNewsData(completion: { [weak self] result in
+        self.getNewsData("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=05030e7af26c4f52b9cdcf04dadf5a30", completion: { [weak self] result in
             print(result)
             switch result {
             case.failure(let error):
@@ -82,15 +82,17 @@ var newsFeedView = NewsFeedView()
     }
 
     // MARK: - Call news api
-    func getNewsData(completion: @escaping(Result<NewsDetails, Error>) -> Void) {
+    func getNewsData(_ url:String,completion: @escaping(Result<NewsDetails, Error>) -> Void) {
         self.activityView = UIActivityIndicatorView(style: .medium)
         activityView?.center = self.newsFeedView.center
         activityView?.tintColor = UIColor.blue
         activityView?.startAnimating()
         guard let activityIndicator = activityView else { return}
         self.newsFeedView.addSubview(activityIndicator)
-        
-        let dataTask = URLSession.shared.dataTask(with: URL(string: "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=05030e7af26c4f52b9cdcf04dadf5a30")!) { (data, response, error) in
+        guard  let validUrl = URL(string: url) else {
+            return
+        }
+        let dataTask = URLSession.shared.dataTask(with: validUrl) { (data, response, error) in
             
             guard error == nil else {
                 print (error!.localizedDescription)

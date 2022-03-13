@@ -14,9 +14,9 @@
             filePath = "CBAOnlineTest/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "getNewsData(completion:)"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "getNewsData(_:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
