@@ -40,9 +40,9 @@ class CBAOnlineTestUITests: XCTestCase {
         }
     }
     func testTheNewsScreen() {
-        
+                        
         let tablesQuery = XCUIApplication().tables
-        tablesQuery.children(matching: .cell).element(boundBy: 3).staticTexts["We are getting the news soon...We just need some more information to get the things ready and deliver an awesome news reading experience for you & keep you fully updated."].swipeUp()
+                tablesQuery.children(matching: .cell).element(boundBy: 3).staticTexts["We are getting the news soon...We just need some more information to get the things ready and deliver an awesome news reading experience for you & keep you fully updated."].swipeUp()
                 tablesQuery.children(matching: .cell).element(boundBy: 13).staticTexts["We are getting the news soon..."].swipeUp()
                 
         

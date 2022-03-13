@@ -45,5 +45,28 @@ var viewControllerObj = ViewController()
             
         })
     }
+    func testDataModel() {
+        viewControllerObj.getNewsData("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=05030e7af26c4f52b9cdcf04dadf5a30",completion: { result in
+            switch result {
+            case .success(let news) :
+                let articles:[Article] = news.articles
+                XCTAssertNotNil(articles)
+                for index in 0..<articles.count {
+                    XCTAssertNotEqual("", articles[index].description, "Description can not be empty String")
+                    XCTAssertNotEqual("", articles[index].urlToImage, "Description can not be empty String")
+                    XCTAssertNotEqual("", articles[index].title, "Description can not be empty String")
+                    
+                }
+                
+                
+            case .failure(let error) :
+                
+                XCTAssertNil(error)
+            
+            }
+            
+            
+        })
+    }
 
 }
