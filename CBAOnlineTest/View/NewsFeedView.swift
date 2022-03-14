@@ -10,7 +10,7 @@ import UIKit
 class NewsFeedView: UIView {
     let newsTableView = UITableView()
     let headerLabel = UILabel()
-
+// Create the sub views
     func createUI() {
         headerLabel.frame =  CGRect(x: self.frame.width/2 - 60, y: 40, width: 120, height: 60)
         headerLabel.text = "Latest News"

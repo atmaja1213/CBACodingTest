@@ -12,34 +12,12 @@ class ViewController: UIViewController {
     var newsFeedView = NewsFeedView()
     private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
-  
-        super.viewDidLoad()
-        
-    }
-    override func viewDidLayoutSubviews() {
+     super.viewDidLoad()
         self.loadUI()
         self.callTheNewsDetailsApi()
-        
     }
-    func callTheNewsDetailsApi() {
-        self.getNewsData(Constants.kNewsUrl, completion: { [weak self] result in
-            print(result)
-            switch result {
-            case.failure(let error):
-                print(error)
-                case .success(let news):
-                
-                self?.articles = news.articles
-                DispatchQueue.main.async{
-                    self?.newsFeedView.newsTableView.reloadData()
-                    
-                }
-                
-            }
-            
-        })
-        
-    }
+    
+    // MARK: - Configure the UI
     func loadUI() {
         
         self.newsFeedView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
@@ -68,10 +46,30 @@ class ViewController: UIViewController {
         
         
     }
+    // MARK: - Add action to refresh control
     @objc private func refreshWeatherData(_ sender: Any) {
         self.callTheNewsDetailsApi()
         self.refreshControl.endRefreshing()
         
+        
+    }
+    func callTheNewsDetailsApi() {
+        self.getNewsData(Constants.kNewsUrl, completion: { [weak self] result in
+            print(result)
+            switch result {
+            case.failure(let error):
+                print(error)
+                case .success(let news):
+                
+                self?.articles = news.articles
+                DispatchQueue.main.async{
+                    self?.newsFeedView.newsTableView.reloadData()
+                    
+                }
+                
+            }
+            
+        })
         
     }
     
@@ -112,7 +110,6 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
         
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
@@ -129,7 +126,7 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource {
         
         return cell
     }
-    /*The api being used is not giving data in chuncks...so i am calling the same api when the table view is scrolled beyound the screen size. */
+    /*The api being used is not giving data in chuncks...so i am calling the same api when the table view is scrolled beyond the screen size. */
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
